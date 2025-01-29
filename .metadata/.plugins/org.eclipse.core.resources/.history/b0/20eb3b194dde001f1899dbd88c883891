@@ -1,0 +1,5 @@
+package com.demo.filmmanagement.repo;
+
+public interface FilmRepo {
+
+}

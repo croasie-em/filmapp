@@ -1,0 +1,23 @@
+package com.demo.filmmanagement.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+
+
+
+@RestController
+@RequestMapping("/films")
+public class FilmController {
+	
+	@Autowired
+	private FilmService service;
+	
+	
+	
+
+
+}

@@ -1,0 +1,6 @@
+package com.demo.usermanagement.repo;
+
+public interface UserRepo extends JpaRespository<,>{
+	
+
+}

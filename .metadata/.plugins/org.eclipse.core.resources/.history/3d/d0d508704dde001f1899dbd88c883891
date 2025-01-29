@@ -1,0 +1,11 @@
+package com.demo.filmmanagement.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.demo.filmmanagement.entity.Film;
+
+
+
+public interface FilmRepo extends JpaRepository<Film, Integer>{
+
+}
