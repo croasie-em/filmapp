@@ -28,7 +28,7 @@ public class FilmController {
 	@Autowired
 	private FilmService service;
 	
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Film>> getAllFilms() {
         List<Film> films = service.getAllFilms();
         return new ResponseEntity<>(films, HttpStatus.OK);
@@ -41,7 +41,7 @@ public class FilmController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Film> addFilm(@RequestBody Film film) {
         Film createdFilm = service.saveFilm(film);
         return new ResponseEntity<>(createdFilm, HttpStatus.CREATED);

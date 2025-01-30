@@ -21,18 +21,29 @@ public class Booking {
     private int filmId; 
     @Column(nullable = false)
     private int cinemaId;
+    @Column(nullable = false)
+    private String bookingDate;
     
     public Booking() {
     	
     }
+    
+    
 
-	public Booking(int bookingid, int userId, int filmId, int cinemaId) {
+
+
+	public Booking(int bookingid, int userId, int filmId, int cinemaId, String bookingDate) {
 		super();
 		this.bookingid = bookingid;
 		this.userId = userId;
 		this.filmId = filmId;
 		this.cinemaId = cinemaId;
+		this.bookingDate = bookingDate;
 	}
+
+
+
+
 
 	public int getBookingid() {
 		return bookingid;
@@ -65,12 +76,34 @@ public class Booking {
 	public void setCinemaId(int cinemaId) {
 		this.cinemaId = cinemaId;
 	}
+	
+
+	public String getBookingDate() {
+		return bookingDate;
+	}
+
+
+
+
+
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+
+
+
 
 	@Override
 	public String toString() {
 		return "Booking [bookingid=" + bookingid + ", userId=" + userId + ", filmId=" + filmId + ", cinemaId="
-				+ cinemaId + "]";
+				+ cinemaId + ", bookingDate=" + bookingDate + "]";
 	}
+	
+	
+
+
+
     
     
 

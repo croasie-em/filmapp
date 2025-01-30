@@ -39,7 +39,7 @@ public class UserController {
     }
     
     // Endpoint to 'get all users'
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = service.getAllUsers();
         return ResponseEntity.ok(users);

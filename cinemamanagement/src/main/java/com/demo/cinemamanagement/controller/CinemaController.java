@@ -25,7 +25,7 @@ public class CinemaController {
 	@Autowired
 	CinemaService service;
 	
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Cinema>> getAllCinemas() {
         List<Cinema> cinemas = service.getAllCinemas();
         return new ResponseEntity<>(cinemas, HttpStatus.OK);
