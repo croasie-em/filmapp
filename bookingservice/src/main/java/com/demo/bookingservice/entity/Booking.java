@@ -15,14 +15,14 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingid;
 	
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User user; 
-    @ManyToOne
-    @JoinColumn(name = "filmId", nullable = false)
-    private Film film; 
-    @ManyToOne
-    @JoinColumn(name = "cinemaId", nullable = false)
-    private Cinema cinema; 
+//    @ManyToOne
+//    @JoinColumn(name = "userId", nullable = false)
+//    private User user; 
+//    @ManyToOne
+//    @JoinColumn(name = "filmId", nullable = false)
+//    private Film film; 
+//    @ManyToOne
+//    @JoinColumn(name = "cinemaId", nullable = false)
+//    private Cinema cinema; 
 
 }
