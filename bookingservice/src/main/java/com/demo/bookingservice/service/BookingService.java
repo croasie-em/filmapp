@@ -25,6 +25,10 @@ public class BookingService {
     @Autowired
     private RestTemplate restTemplate;
     
+    public List<Booking> getAllBookingsList() {
+        return bookingRepo.findAll();
+    }
+    
     public List<Map<String, Object>> getAllBookings() {
         List<Booking> bookings = bookingRepo.findAll();
         List<Map<String, Object>> bookingsDetails = new ArrayList<>();

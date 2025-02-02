@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.bookingservice.dto.BookingDto;
+import com.demo.bookingservice.entity.Booking;
 import com.demo.bookingservice.service.BookingService;
 
 @RestController
@@ -38,5 +39,11 @@ public class BookingController {
     @PostMapping("/add")
     public Map<String, Object> addBooking(@RequestBody BookingDto bookingDto) {
         return bookingService.addBooking(bookingDto);
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<Booking>> getAllBookingsList() {
+        List<Booking> bookings = bookingService.getAllBookingsList();
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 }

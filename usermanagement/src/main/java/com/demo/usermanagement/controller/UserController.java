@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.usermanagement.entity.LoginRequest;
+import com.demo.usermanagement.entity.Role;
 import com.demo.usermanagement.entity.User;
 import com.demo.usermanagement.service.UserService;
 
@@ -55,11 +56,11 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
 
-        if (!user.getRole().equals("admin")) {
+        if (user.getRole() != Role.ADMIN) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
         }
 
-        return ResponseEntity.ok(Map.of("role", user.getRole(), "username", user.getUsername()));
+        return ResponseEntity.ok(Map.of("role", user.getRole().toString(), "username", user.getUsername()));
     }
 
 

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,34 +27,38 @@ public class CinemaController {
 	CinemaService service;
 	
     @GetMapping
-    public ResponseEntity<List<Cinema>> getAllCinemas() {
-        List<Cinema> cinemas = service.getAllCinemas();
-        return new ResponseEntity<>(cinemas, HttpStatus.OK);
+    public List<Cinema> getAllCinemas() {
+        return service.getAllCinemas();
     }
     
-    @GetMapping("/{cinemaId}")
-    public ResponseEntity<Cinema> getCinemaById(@PathVariable int cinemaId) {
-        Optional<Cinema> cinema = service.getCinemaById(cinemaId);
+    @GetMapping("/{cinemaid}")
+    public ResponseEntity<Cinema> getCinemaById(@PathVariable int cinemaid) {
+        Optional<Cinema> cinema = service.getCinemaById(cinemaid);
         return cinema.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
-    @PutMapping("/{cinemaId}")
-    public ResponseEntity<Cinema> updateCinema(@PathVariable int cinemaId, @RequestBody Cinema updatedCinema) {
-        Optional<Cinema> existingCinema = service.getCinemaById(cinemaId);
+    @PostMapping
+    public Cinema addCinema(@RequestBody Cinema cinema) {
+        return service.addCinema(cinema);
+    }
+    
+    @PutMapping("/{cinemaid}")
+    public ResponseEntity<Cinema> updateCinema(@PathVariable int cinemaid, @RequestBody Cinema updatedCinema) {
+        Optional<Cinema> existingCinema = service.getCinemaById(cinemaid);
         if (existingCinema.isPresent()) {
-            updatedCinema.setCinemaid(cinemaId); // Ensure correct ID assignment before saving
-            Cinema savedCinema = service.saveCinema(updatedCinema);
+            updatedCinema.setCinemaid(cinemaid); 
+            Cinema savedCinema = service.addCinema(updatedCinema);
             return new ResponseEntity<>(savedCinema, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
-    @DeleteMapping("/{cinemaId}")
-    public ResponseEntity<Void> deleteCinema(@PathVariable int cinemaId) {
-        Optional<Cinema> existingCinema = service.getCinemaById(cinemaId);
+    @DeleteMapping("/{cinemaid}")
+    public ResponseEntity<Void> deleteCinema(@PathVariable int cinemaid) {
+        Optional<Cinema> existingCinema = service.getCinemaById(cinemaid);
         if (existingCinema.isPresent()) {
-            service.deleteCinema(cinemaId);
+            service.deleteCinema(cinemaid);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
