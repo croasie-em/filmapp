@@ -27,6 +27,21 @@ public class UserService {
     public List<User> getAllUsers() {
         return repo.findAll(); 
     }
+    
+    public User validateUser(String username, String password) {
+        Optional<User> userOptional =repo.findByUsername(username);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            
+           
+            if (user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+
+        return null; 
+    }
 	
 	
 

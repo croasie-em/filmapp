@@ -3,6 +3,7 @@ package com.demo.usermanagement.controller;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.usermanagement.entity.LoginRequest;
 import com.demo.usermanagement.entity.User;
 import com.demo.usermanagement.service.UserService;
 
@@ -44,5 +46,24 @@ public class UserController {
         List<User> users = service.getAllUsers();
         return ResponseEntity.ok(users);
     }
+    
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        User user = service.validateUser(request.getUsername(), request.getPassword());
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        }
+
+        if (!user.getRole().equals("admin")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
+        }
+
+        return ResponseEntity.ok(Map.of("role", user.getRole(), "username", user.getUsername()));
+    }
+
+
+    
+    
 
 }
