@@ -31,7 +31,11 @@ public class UserController {
 	// Endpoint for registering a new user
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
-        User savedUser = service.registerUser(user); 
+        // Set default role to USER
+        user.setRole(Role.USER);
+        user.setActive(true);
+        
+        User savedUser = service.registerUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
     
@@ -56,10 +60,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
 
-        if (user.getRole() != Role.ADMIN) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
-        }
-
+        // Allow all users to log in, not just ADMINs
         return ResponseEntity.ok(Map.of("role", user.getRole().toString(), "username", user.getUsername()));
     }
 
