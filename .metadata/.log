@@ -4038,3 +4038,67 @@ Contains: Missing org.springframework.cloud:spring-cloud-starter-loadbalancer:ja
 !MESSAGE Could not resolve artifact org.springframework.cloud:spring-cloud-starter-loadbalancer:jar:javadoc:4.0.4
 !SUBENTRY 2 org.eclipse.m2e.core 4 0 2025-02-03 09:52:29.902
 !MESSAGE Missing org.springframework.cloud:spring-cloud-starter-loadbalancer:jar:javadoc:4.0.4
+
+!ENTRY org.eclipse.ui.console 4 2 2025-02-03 12:42:17.794
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.console".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4922)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:500)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:420)
+	at org.eclipse.swt.widgets.Composite.getChildren(Composite.java:472)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.setDescription(ContributedPartRenderer.java:161)
+	at org.eclipse.ui.part.WorkbenchPart.internalSetContentDescription(WorkbenchPart.java:427)
+	at org.eclipse.ui.part.WorkbenchPart.setContentDescription(WorkbenchPart.java:411)
+	at org.eclipse.ui.part.ViewPart.setContentDescription(ViewPart.java:141)
+	at org.eclipse.ui.internal.console.ConsoleView.updateTitle(ConsoleView.java:255)
+	at org.eclipse.ui.internal.console.ConsoleView.propertyChange(ConsoleView.java:135)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:97)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:112)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:230)
+	at org.eclipse.ui.console.AbstractConsole.setName(AbstractConsole.java:181)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsole.init(ProcessConsole.java:573)
+	at org.eclipse.ui.console.AbstractConsole.initialize(AbstractConsole.java:242)
+	at org.eclipse.ui.console.AbstractConsole$Lifecycle.consolesAdded(AbstractConsole.java:64)
+	at org.eclipse.ui.internal.console.ConsoleManager$ConsoleNotifier.run(ConsoleManager.java:159)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.console.ConsoleManager$ConsoleNotifier.notify(ConsoleManager.java:180)
+	at org.eclipse.ui.internal.console.ConsoleManager.fireUpdate(ConsoleManager.java:256)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:223)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui.console 4 120 2025-02-03 12:42:17.876
+!MESSAGE Exception occurred during console property change notification.
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4922)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:500)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:420)
+	at org.eclipse.swt.widgets.Composite.getChildren(Composite.java:472)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.setDescription(ContributedPartRenderer.java:161)
+	at org.eclipse.ui.part.WorkbenchPart.internalSetContentDescription(WorkbenchPart.java:427)
+	at org.eclipse.ui.part.WorkbenchPart.setContentDescription(WorkbenchPart.java:411)
+	at org.eclipse.ui.part.ViewPart.setContentDescription(ViewPart.java:141)
+	at org.eclipse.ui.internal.console.ConsoleView.updateTitle(ConsoleView.java:255)
+	at org.eclipse.ui.internal.console.ConsoleView.propertyChange(ConsoleView.java:135)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.run(AbstractConsole.java:97)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.console.AbstractConsole$PropertyNotifier.notify(AbstractConsole.java:112)
+	at org.eclipse.ui.console.AbstractConsole.firePropertyChange(AbstractConsole.java:230)
+	at org.eclipse.ui.console.AbstractConsole.setName(AbstractConsole.java:181)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsole.init(ProcessConsole.java:573)
+	at org.eclipse.ui.console.AbstractConsole.initialize(AbstractConsole.java:242)
+	at org.eclipse.ui.console.AbstractConsole$Lifecycle.consolesAdded(AbstractConsole.java:64)
+	at org.eclipse.ui.internal.console.ConsoleManager$ConsoleNotifier.run(ConsoleManager.java:159)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.console.ConsoleManager$ConsoleNotifier.notify(ConsoleManager.java:180)
+	at org.eclipse.ui.internal.console.ConsoleManager.fireUpdate(ConsoleManager.java:256)
+	at org.eclipse.ui.internal.console.ConsoleManager.addConsoles(ConsoleManager.java:223)
+	at org.eclipse.debug.internal.ui.views.console.ProcessConsoleManager$ConsoleCreation.run(ProcessConsoleManager.java:78)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
